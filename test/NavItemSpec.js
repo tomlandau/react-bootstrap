@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {expect, assert} from 'chai'
 
 import NavItem from '../src/NavItem';
+mockDom('<html><body></body></html>');
 
 describe('<NavItem>', () => {
   it('Should add active class', () => {

@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Button from '../src/Button';
 import ButtonGroup from '../src/ButtonGroup';
 import ButtonToolbar from '../src/ButtonToolbar';
+
+mockDom('<html><body></body></html>');
 
 describe('ButtonToolbar', () => {
   it('Should output a button toolbar', () => {

@@ -3,16 +3,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Media from './Media';
-import { bsClass, getClassSet, prefix, splitBsProps }
-  from './utils/bootstrapUtils';
+import bsClass from './utils/bsClass';
+import getClassSet from './utils/getClassSet';
+import {splitBsProps} from './utils/splitBsProps';
+import prefix from './utils/prefix';
 
 const propTypes = {
   /**
-   * Align the media to the top, middle, or bottom of the media object.
+   * @property {'top'|'middle'|'bottom'} align - Align the media to the top, middle, or bottom of the media object.
    */
   align: PropTypes.oneOf(['top', 'middle', 'bottom']),
 };
 
+/**
+ * # A left-aligned image alongside textual context.
+ * @example
+ * <Media>
+ *   <Media.Left>
+ *     <img width={64} height={64} src="/assets/thumbnail.png" alt="Image"/>
+ *   </Media.Left>
+ *   <Media.Body>
+ *     <Media.Heading>Media Heading</Media.Heading>
+ *     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+ *   </Media.Body>
+ * </Media>
+ */
 class MediaLeft extends React.Component {
   render() {
     const { align, className, ...props } = this.props;

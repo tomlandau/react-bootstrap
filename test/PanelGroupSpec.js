@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Panel from '../src/Panel';
 import PanelGroup from '../src/PanelGroup';
 
-import { getOne } from './helpers';
+function getOne(collection) {
+  expect(collection.length).to.equal(1);
+  return collection[0];
+}
+
+mockDom('<html><body></body></html>');
 
 describe('<PanelGroup>', () => {
   it('Should pass bsStyle to Panels', () => {

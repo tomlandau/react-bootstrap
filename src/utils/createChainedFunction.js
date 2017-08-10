@@ -1,11 +1,12 @@
 /**
- * Safe chained function
- *
+ * Safe chained function.
  * Will only create a new function if needed,
  * otherwise will pass back existing functions or null.
  *
+ * @name createChainedFunction
  * @param {function} functions to chain
  * @returns {function|null}
+ * @bit
  */
 function createChainedFunction(...funcs) {
   return funcs

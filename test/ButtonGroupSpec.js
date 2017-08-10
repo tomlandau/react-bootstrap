@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
+import sinon from 'sinon';
 
 import ButtonGroup from '../src/ButtonGroup';
 import Button from '../src/Button';
 
-import {shouldWarn} from './helpers';
+mockDom('<html><body></body></html>');
 
 describe('ButtonGroup', () => {
   it('Should output a button group', () => {

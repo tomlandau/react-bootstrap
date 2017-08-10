@@ -26,6 +26,9 @@ const defaultProps = {
   disabled: false
 };
 
+/**
+ * ## Pagination button for internal use with the pagination component
+ */
 class PaginationButton extends React.Component {
   constructor(props, context) {
     super(props, context);

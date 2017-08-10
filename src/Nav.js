@@ -6,10 +6,15 @@ import ReactDOM from 'react-dom';
 import all from 'prop-types-extra/lib/all';
 import warning from 'warning';
 
-import { bsClass, bsStyles, getClassSet, prefix, splitBsProps }
-  from './utils/bootstrapUtils';
+import bsClass from './utils/bsClass';
+import bsStyles from './utils/bsStyles';
+import getClassSet from './utils/getClassSet';
+import {splitBsProps} from './utils/splitBsProps';
+import prefix from './utils/prefix';
 import createChainedFunction from './utils/createChainedFunction';
-import ValidComponentChildren from './utils/ValidComponentChildren';
+import map from '../components/element-children/map';
+import toArray from '../components/element-children/to-array';
+import find from '../components/element-children/find';
 
 // TODO: Should we expose `<NavItem>` as `<Nav.Item>`?
 
@@ -20,21 +25,24 @@ import ValidComponentChildren from './utils/ValidComponentChildren';
 
 const propTypes = {
   /**
-   * Marks the NavItem with a matching `eventKey` as active. Has a
+   * @property {*} activeKey - Marks the NavItem with a matching `eventKey` as active. Has a 
    * higher precedence over `activeHref`.
    */
   activeKey: PropTypes.any,
 
   /**
-   * Marks the child NavItem with a matching `href` prop as active.
+   * @property {string} activeHref - Marks the child NavItem with a matching `href` prop as active.
    */
   activeHref: PropTypes.string,
 
   /**
-   * NavItems are be positioned vertically.
+   * @property {bool} stacked - NavItems are be positioned vertically.
    */
   stacked: PropTypes.bool,
 
+  /**
+   * @property {bool} - NavItems take the full width of their parent.
+   */
   justified: all(
     PropTypes.bool,
     ({ justified, navbar }) => (
@@ -44,7 +52,7 @@ const propTypes = {
   ),
 
   /**
-   * A callback fired when a NavItem is selected.
+   * @property {func} onSelect - A callback fired when a NavItem is selected.
    *
    * ```js
    * function (
@@ -56,7 +64,7 @@ const propTypes = {
   onSelect: PropTypes.func,
 
   /**
-   * ARIA role for the Nav, in the context of a TabContainer, the default will
+   * @property {string} role - ARIA role for the Nav, in the context of a TabContainer, the default will
    * be set to "tablist", but can be overridden by the Nav when set explicitly.
    *
    * When the role is set to "tablist" NavItem focus is managed according to
@@ -66,19 +74,19 @@ const propTypes = {
   role: PropTypes.string,
 
   /**
-   * Apply styling an alignment for use in a Navbar. This prop will be set
+   * @property {bool} navbar - Apply styling an alignment for use in a Navbar. This prop will be set
    * automatically when the Nav is used inside a Navbar.
    */
   navbar: PropTypes.bool,
 
   /**
-   * Float the Nav to the right. When `navbar` is `true` the appropriate
+   * @property {bool} pullRight - Float the Nav to the right. When `navbar` is `true` the appropriate
    * contextual classes are added as well.
    */
   pullRight: PropTypes.bool,
 
   /**
-   * Float the Nav to the left. When `navbar` is `true` the appropriate
+   * @property {bool} pullLeft - Float the Nav to the left. When `navbar` is `true` the appropriate
    * contextual classes are added as well.
    */
   pullLeft: PropTypes.bool,
@@ -105,6 +113,80 @@ const contextTypes = {
   }),
 };
 
+/**
+ * # A react component that contains navigation items.
+ * Navs come in two styles, `pills` and `tabs`. Disable a tab by adding `disabled`.
+ * 
+ * &nbsp;
+ * ## Example
+ * ```js
+ * function handleSelect(selectedKey) {
+ *  alert('selected ' + selectedKey);
+ * }
+ * 
+ * const navInstance = (
+ *  <Nav bsStyle="pills" activeKey={1} onSelect={handleSelect}>
+ *    <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
+ *    <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
+ *    <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+ *  </Nav>
+ * );
+ * 
+ * ReactDOM.render(navInstance, mountNode);
+ * ```
+ * 
+ * &nbsp;
+ * ## Stacked
+ * They can also be `stacked` vertically.
+ * ```js
+ * function handleSelect(selectedKey) {
+ *  alert('selected ' + selectedKey);
+ * }
+ * 
+ * const navInstance = (
+ *  <Nav bsStyle="pills" stacked activeKey={1} onSelect={handleSelect}>
+ *    <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
+ *    <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
+ *    <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+ *  </Nav>
+ * );
+ * 
+ * ReactDOM.render(navInstance, mountNode);
+ * ```
+ * 
+ * &nbsp;
+ * ## Justified
+ * ```js
+ * They can be `justified` to take the full width of their parent.
+ * const NavJustified = React.createClass({
+ *  handleSelect(selectedKey) {
+ *    alert('selected ' + selectedKey);
+ *  },
+ * 
+ * render() {
+ *    return (
+ *      <div>
+ *        <Nav bsStyle="tabs" justified activeKey={1} onSelect={this.handleSelect}>
+ *          <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
+ *          <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
+ *          <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+ *        </Nav>
+ *        <br />
+ *        <Nav bsStyle="pills" justified activeKey={1} onSelect={this.handleSelect}>
+ *          <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
+ *          <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
+ *          <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+ *        </Nav>
+ *      </div>
+ *    );
+ *  }
+ * });
+ * 
+ * ReactDOM.render(<NavJustified />, mountNode);
+ * ```
+ * @property {string} bsClass - Base CSS class and prefix for the component. Generally one should only change `bsClass` to provide new, non-Bootstrap, CSS styles for a component. Default is `nav`.
+ * @property {'tabs'|'pills'} bsStyle - Component visual or contextual style variants.
+ */
 class Nav extends React.Component {
   componentDidUpdate() {
     if (!this._needsRefocus) {
@@ -116,11 +198,11 @@ class Nav extends React.Component {
     const { children } = this.props;
     const { activeKey, activeHref } = this.getActiveProps();
 
-    const activeChild = ValidComponentChildren.find(children, child => (
+    const activeChild = find(children, child => (
       this.isActive(child, activeKey, activeHref)
     ));
 
-    const childrenArray = ValidComponentChildren.toArray(children);
+    const childrenArray = toArray(children);
     const activeChildIndex = childrenArray.indexOf(activeChild);
 
     const childNodes = ReactDOM.findDOMNode(this).children;
@@ -166,7 +248,7 @@ class Nav extends React.Component {
     ));
     const { activeKey, activeHref } = this.getActiveProps();
 
-    const activeChild = ValidComponentChildren.find(children, child => (
+    const activeChild = find(children, child => (
       this.isActive(child, activeKey, activeHref)
     ));
 
@@ -316,7 +398,7 @@ class Nav extends React.Component {
         role={role}
         className={classNames(className, classes)}
       >
-        {ValidComponentChildren.map(children, child => {
+        {map(children, child => {
           const active = this.isActive(child, activeKey, activeHref);
           const childOnSelect = createChainedFunction(
             child.props.onSelect,

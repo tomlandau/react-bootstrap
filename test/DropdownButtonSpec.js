@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, expect, should} from 'chai';
 
 import Dropdown from '../src/Dropdown';
 import DropdownButton from '../src/DropdownButton';
 import DropdownMenu from '../src/DropdownMenu';
 import DropdownToggle from '../src/DropdownToggle';
 import MenuItem from '../src/MenuItem';
+mockDom('<html><body></body></html>');
+should();
 
 describe('<DropdownButton>', () => {
   const simpleDropdown = (

@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
+import {expect, should} from 'chai';
 
 import DropdownToggle from '../src/DropdownToggle';
+mockDom('<html><body></body></html>');
 
-import { getOne } from './helpers';
+should();
+
+function getOne(collection) {
+  expect(collection.length).to.equal(1);
+  return collection[0];
+}
 
 describe('<DropdownToggle>', () => {
   const simpleToggle = <DropdownToggle open={false} title="herpa derpa" />;

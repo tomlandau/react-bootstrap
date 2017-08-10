@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Alert from '../src/Alert';
+
+mockDom('<html><body></body></html>');
 
 describe('<Alert>', () => {
   it('Should output a alert with message', () => {

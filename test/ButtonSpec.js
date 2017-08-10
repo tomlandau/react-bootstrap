@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Button from '../src/Button';
+mockDom('<html><body></body></html>');
 
 describe('<Button>', () => {
   it('Should output a button', () => {

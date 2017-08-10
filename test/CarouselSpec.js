@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
+import {expect, assert} from 'chai';
 
 import Carousel from '../src/Carousel';
+mockDom('<html><body></body></html>');
 
 describe('<Carousel>', () => {
   const items = [

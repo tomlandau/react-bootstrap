@@ -3,14 +3,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import elementType from 'prop-types-extra/lib/elementType';
 
-import { bsClass as setBsClass, prefix, splitBsPropsAndOmit }
-  from './utils/bootstrapUtils';
+import setBsClass from './utils/bsClass';
+import prefix from './utils/prefix';
+import {splitBsPropsAndOmit} from './utils/splitBsProps';
 
 const propTypes = {
+  /**
+   * @property {elementType} componentClass - You can use a custom element type for this component. Default is `div`.
+   */
   componentClass: elementType,
 
   /**
-   * Sets a default animation strategy for all children `<TabPane>`s. Use
+   * @property {bool|elementType} animation - Sets a default animation strategy for all children `<TabPane>`s. Use
    * `false` to disable, `true` to enable the default `<Fade>` animation or any
    * `<Transition>` component.
    */
@@ -19,15 +23,16 @@ const propTypes = {
   ]),
 
   /**
-   * Wait until the first "enter" transition to mount tabs (add them to the DOM)
+   * @property {bool} mountOnEnter - Wait until the first "enter" transition to mount tabs (add them to the DOM)
    */
   mountOnEnter: PropTypes.bool,
 
   /**
-   * Unmount tabs (remove it from the DOM) when they are no longer visible
+   * @property {bool} UnmountOnExit - Unmount tabs (remove it from the DOM) when they are no longer visible
    */
   unmountOnExit: PropTypes.bool,
 };
+
 
 const defaultProps = {
   componentClass: 'div',
@@ -57,6 +62,39 @@ const childContextTypes = {
   }),
 };
 
+/**
+ * Represents a container for tabs' contents.
+ * @example
+ * const tabsInstance = (
+ *  <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+ *    <Row className="clearfix">
+ *      <Col sm={4}>
+ *        <Nav bsStyle="pills" stacked>
+ *          <NavItem eventKey="first">
+ *            Tab 1
+ *          </NavItem>
+ *          <NavItem eventKey="second">
+ *            Tab 2
+ *          </NavItem>
+ *        </Nav>
+ *      </Col>
+ *      <Col sm={8}>
+ *        <Tab.Content animation>
+ *          <Tab.Pane eventKey="first">
+ *            Tab 1 content
+ *          </Tab.Pane>
+ *          <Tab.Pane eventKey="second">
+ *            Tab 2 content
+ *          </Tab.Pane>
+ *        </Tab.Content>
+ *      </Col>
+ *    </Row>
+ *  </Tab.Container>
+ * );
+ * 
+ * ReactDOM.render(tabsInstance, mountNode);
+ * @property {string} bsClass - Base CSS class and prefix for the component. Generally one should only change `bsClass` to provide new, non-Bootstrap, CSS styles for a component. Default is `tab`.
+ */
 class TabContent extends React.Component {
   constructor(props, context) {
     super(props, context);

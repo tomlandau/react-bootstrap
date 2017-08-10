@@ -2,16 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import elementType from 'prop-types-extra/lib/elementType';
 
+/**
+ * # SafeAnchor ensures that when an anchor is used like a button its accessible.
+ * There are situations due to browser quirks or Bootstrap CSS where
+ * an anchor tag is needed, when semantically a button tag is the
+ * better choice. SafeAnchor ensures that when an anchor is used like a
+ * button its accessible. It also emulates input `disabled` behavior for
+ * links, which is usually desirable for Buttons, NavItems, MenuItems, etc.
+ * @bit
+ */
+
 const propTypes = {
+  /**
+   * @property {string} href
+   */
   href: PropTypes.string,
+  /**
+   * @property {func} onClick
+   */
   onClick: PropTypes.func,
+  /**
+   * @property {bool} disbled
+   */
   disabled: PropTypes.bool,
+  /**
+   * @property {string} role
+   */
   role: PropTypes.string,
+  /**
+   * @property {number|string} tabIndex
+   */
   tabIndex: PropTypes.oneOfType([
     PropTypes.number, PropTypes.string,
   ]),
   /**
-   * this is sort of silly but needed for Button
+   * @property {elementType} componentClass - this is sort of silly but needed for Button
    */
   componentClass: elementType,
 };
@@ -24,13 +49,6 @@ function isTrivialHref(href) {
   return !href || href.trim() === '#';
 }
 
-/**
- * There are situations due to browser quirks or Bootstrap CSS where
- * an anchor tag is needed, when semantically a button tag is the
- * better choice. SafeAnchor ensures that when an anchor is used like a
- * button its accessible. It also emulates input `disabled` behavior for
- * links, which is usually desirable for Buttons, NavItems, MenuItems, etc.
- */
 class SafeAnchor extends React.Component {
   constructor(props, context) {
     super(props, context);

@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import tsp from 'teaspoon';
+import {expect, assert,should} from 'chai';
+import sinon from 'sinon';
 
 import MenuItem from '../src/MenuItem';
-
-import { shouldWarn } from './helpers';
+should();
+mockDom('<html><body></body></html>');
 
 describe('<MenuItem>', () => {
   it('renders divider', () => {
@@ -31,7 +33,8 @@ describe('<MenuItem>', () => {
   });
 
   it('renders divider not children', () => {
-    shouldWarn('Children will not be rendered for dividers');
+    const spy = sinon.spy(console, 'error');
+
 
     const instance = ReactTestUtils.renderIntoDocument(
       <MenuItem divider>
@@ -42,6 +45,8 @@ describe('<MenuItem>', () => {
 
     node.className.should.match(/\bdivider\b/);
     node.innerHTML.should.not.match(/Some child/);
+    expect(spy.calledWithMatch(sinon.match(/(Children will not be rendered for dividers)/))).to.be.ok;
+
   });
 
   it('renders header', () => {

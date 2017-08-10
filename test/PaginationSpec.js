@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, expect, should} from 'chai';
 
 import Pagination from '../src/Pagination';
+
+mockDom('<html><body></body></html>');
+should();
 
 describe('<Pagination>', () => {
   it('should have class', () => {

@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {expect, assert, should} from 'chai';
 
 import MenuItem from '../src/MenuItem';
 import Nav from '../src/Nav';
 import NavDropdown from '../src/NavDropdown';
+should();
+mockDom('<html><body></body></html>');
 
 describe('<NavDropdown>', () => {
   it('Should render li when in nav', () => {

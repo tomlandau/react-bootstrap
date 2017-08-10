@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Breadcrumb from '../src/Breadcrumb';
+mockDom('<html><body></body></html>');
 
 describe('<Breadcrumb>', () => {
   it('Should apply id to the wrapper ol element', () => {

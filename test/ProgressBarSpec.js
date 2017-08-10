@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, expect} from 'chai';
+import sinon from 'sinon';
 
 import ProgressBar from '../src/ProgressBar';
+mockDom('<html><body></body></html>');
 
-import { getOne, shouldWarn } from './helpers';
+function getOne(collection) {
+  expect(collection.length).to.equal(1);
+  return collection[0];
+}
 
 function getProgressBarNode(wrapper) {
   return ReactTestUtils.findRenderedDOMComponentWithClass(wrapper, 'progress-bar');
@@ -228,7 +234,7 @@ describe('<ProgressBar>', () => {
   });
 
   it('allows only ProgressBar in children', () => {
-    shouldWarn('Failed prop');
+    const spy = sinon.spy(console, 'error');
 
     function NotProgressBar() {
       return null;
@@ -242,5 +248,7 @@ describe('<ProgressBar>', () => {
         <ProgressBar key={2} />
       </ProgressBar>
     );
+
+    expect(spy.calledWithMatch(sinon.match(/(Failed prop)/))).to.be.ok;
   });
 });

@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Badge from '../src/Badge';
+
+mockDom('<html><body></body></html>');
 
 describe('<Badge>', () => {
   it('Should output a badge with content', () => {

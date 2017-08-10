@@ -1,3 +1,7 @@
+/**
+ * ## Splits component props between parent and child
+ * @bit
+ */
 export default function splitComponentProps(props, Component) {
   const componentPropTypes = Component.propTypes;
 

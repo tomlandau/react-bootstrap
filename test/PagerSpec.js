@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Pager from '../src/Pager';
+mockDom('<html><body></body></html>');
 
 describe('Pager', () => {
   it('Should output a unordered list as root element with class "pager"', () => {

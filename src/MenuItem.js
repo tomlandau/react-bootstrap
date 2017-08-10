@@ -4,24 +4,14 @@ import PropTypes from 'prop-types';
 import all from 'prop-types-extra/lib/all';
 
 import SafeAnchor from './SafeAnchor';
-import { bsClass, prefix, splitBsPropsAndOmit } from './utils/bootstrapUtils';
+import bsClass from './utils/bsClass';
+import prefix from './utils/prefix';
+import {splitBsPropsAndOmit} from './utils/splitBsProps';
 import createChainedFunction from './utils/createChainedFunction';
 
 const propTypes = {
-  /**
-   * Highlight the menu item as active.
-   */
   active: PropTypes.bool,
-
-  /**
-   * Disable the menu item, making it unselectable.
-   */
   disabled: PropTypes.bool,
-
-  /**
-   * Styles the menu item as a horizontal rule, providing visual separation between
-   * groups of menu items.
-   */
   divider: all(
     PropTypes.bool,
     ({ divider, children }) => (
@@ -30,34 +20,10 @@ const propTypes = {
         null
     ),
   ),
-
-  /**
-   * Value passed to the `onSelect` handler, useful for identifying the selected menu item.
-   */
   eventKey: PropTypes.any,
-
-  /**
-   * Styles the menu item as a header label, useful for describing a group of menu items.
-   */
   header: PropTypes.bool,
-
-  /**
-   * HTML `href` attribute corresponding to `a.href`.
-   */
   href: PropTypes.string,
-
-  /**
-   * Callback fired when the menu item is clicked.
-   */
   onClick: PropTypes.func,
-
-  /**
-   * Callback fired when the menu item is selected.
-   *
-   * ```js
-   * (eventKey: any, event: Object) => any
-   * ```
-   */
   onSelect: PropTypes.func,
 };
 
@@ -67,6 +33,59 @@ const defaultProps = {
   header: false,
 };
 
+/**
+ * # Represents a menu item in a dropdown.
+ * It supports the basic anchor properties `href`, `target`, `title`.
+ * 
+ * &nbsp;
+ * It also supports different properties of the normal Bootstrap MenuItem.
+ * * `header`: To add a header label to sections
+ * * `divider`: Adds an horizontal divider between sections
+ * * `disabled`: shows the item as disabled, and prevents onSelect from firing
+ * * `eventKey`: passed to the callback
+ * * `onSelect`: a callback that is called when the user clicks the item.
+ * 
+ * &nbsp;
+ * The callback is called with the following arguments: `event` and `eventKey`.
+ * ```js
+ * function onSelectAlert(eventKey) {
+ *  alert(`Alert from menu item.\neventKey: ${eventKey}`);
+ * }
+​ *
+ * const MenuItems = (
+ *  <Clearfix>
+ *    <ul className="dropdown-menu open">
+ *      <MenuItem header>Header</MenuItem>
+ *      <MenuItem>link</MenuItem>
+ *      <MenuItem divider/>
+ *      <MenuItem header>Header</MenuItem>
+ *      <MenuItem>link</MenuItem>
+ *      <MenuItem disabled>disabled</MenuItem>
+ *      <MenuItem title="See? I have a title.">
+ *        link with title
+ *      </MenuItem>
+ *      <MenuItem eventKey={1} href="#someHref" onSelect={onSelectAlert}>
+ *        link that alerts
+ *      </MenuItem>
+ *    </ul>
+ *  </Clearfix>
+ * );
+​ * 
+ * ReactDOM.render(MenuItems, mountNode);
+ * ```
+ * 
+ * &nbsp;
+ * ## props:
+ * @property {bool} active - Highlight the menu item as active.
+ * @property {string} bsClass - Base CSS class and prefix for the component. Generally one should only change `bsClass` to provide new, non-Bootstrap, CSS styles for a component. Default is `dropdown`.
+ * @property {bool} disabled - Disable the menu item, making it unselectable. Default is `false`.
+ * @property {bool} divider - Styles the menu item as a horizontal rule, providing visual separation between groups of menu items. Default is `false`.
+ * @property {*} eventKey - Value passed to the `onSelect` handler, useful for identifying the selected menu item.
+ * @property {bool} header - Styles the menu item as a header label, useful for describing a group of menu items. Default is `false`.
+ * @property {string} href - HTML `href` attribute corresponding to `a.href`.
+ * @property {func} onClick - Callback fired when the menu item is clicked.
+ * @property {func} onSelect - Callback fired when the menu item is selected: `(eventKey: *, event: Object) => *`.
+ */
 class MenuItem extends React.Component {
   constructor(props, context) {
     super(props, context);

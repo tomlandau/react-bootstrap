@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'teaspoon';
+import {expect} from 'chai';
 
 import FormControl from '../src/FormControl';
 import FormGroup from '../src/FormGroup';
@@ -51,7 +52,7 @@ describe('<FormControl>', () => {
   });
 
   it('should prefer explicit id', () => {
-    shouldWarn('ignored');
+    const spy = sinon.spy(console, 'error');
 
     $(
       <FormGroup controlId="foo">
@@ -60,6 +61,8 @@ describe('<FormControl>', () => {
     )
       .render()
       .single('input#bar.form-control');
+
+      expect(spy.calledWithMatch(sinon.match(/(ignored)/))).to.be.ok;
   });
 
   it('should support inputRef', () => {

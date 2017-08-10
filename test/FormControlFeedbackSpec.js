@@ -1,14 +1,15 @@
 import React from 'react';
 import $ from 'teaspoon';
 
-import FormControl from '../src/FormControl';
+import FormControlFeedback from '../src/FormControlFeedback';
 import FormGroup from '../src/FormGroup';
+mockDom('<html><body></body></html>');
 
-describe('<FormControl.Feedback>', () => {
+describe('<FormControlFeedback>', () => {
   it('should render default success', () => {
     $(
       <FormGroup validationState="success">
-        <FormControl.Feedback />
+        <FormControlFeedback />
       </FormGroup>
     )
       .render()
@@ -18,7 +19,7 @@ describe('<FormControl.Feedback>', () => {
   it('should render default warning', () => {
     $(
       <FormGroup validationState="warning">
-        <FormControl.Feedback />
+        <FormControlFeedback />
       </FormGroup>
     )
       .render()
@@ -28,7 +29,7 @@ describe('<FormControl.Feedback>', () => {
   it('should render default error', () => {
     $(
       <FormGroup validationState="error">
-        <FormControl.Feedback />
+        <FormControlFeedback />
       </FormGroup>
     )
       .render()
@@ -39,7 +40,7 @@ describe('<FormControl.Feedback>', () => {
     $(
       <FormGroup validationState="success">
         <div>
-          <FormControl.Feedback />
+          <FormControlFeedback />
         </div>
       </FormGroup>
     )
@@ -53,9 +54,9 @@ describe('<FormControl.Feedback>', () => {
     }
 
     $(
-      <FormControl.Feedback>
+      <FormControlFeedback>
         <MyComponent className="foo" />
-      </FormControl.Feedback>
+      </FormControlFeedback>
     )
       .render()
       .single($.s`${MyComponent}.foo.form-control-feedback`);

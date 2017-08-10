@@ -3,6 +3,8 @@ import $ from 'teaspoon';
 
 import Form from '../src/Form';
 import FormGroup from '../src/FormGroup';
+mockDom('<html><body></body></html>');
+
 
 describe('<Form>', () => {
   it('should support horizontal', () => {

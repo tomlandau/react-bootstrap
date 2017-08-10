@@ -3,10 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import BaseModal from 'react-overlays/lib/Modal';
+import {assert, expect} from 'chai'
+import sinon from 'sinon';
+import render from '../src/utils/render'
 
 import Modal from '../src/Modal';
-
-import { render } from './helpers';
+mockDom('<html><body></body></html>');
 
 describe('<Modal>', () => {
   let mountPoint;

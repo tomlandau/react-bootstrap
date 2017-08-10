@@ -1,9 +1,11 @@
 import React from 'react';
 import $ from 'teaspoon';
+import {expect} from 'chai';
 
 import Button from '../src/Button';
 import FormControl from '../src/FormControl';
 import InputGroup from '../src/InputGroup';
+mockDom('<html><body></body></html>');
 
 describe('<InputGroup>', () => {
   it('should render properly', () => {

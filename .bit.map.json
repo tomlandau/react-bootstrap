@@ -1,0 +1,359 @@
+{
+    "react-bootstrap.element-children/element-children/filter@1": {
+        "files": [
+            {
+                "name": "filter.js",
+                "relativePath": "src/filter.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/filter.js",
+        "rootDir": "components/element-children/filter"
+    },
+    "global/curry": {
+        "files": [
+            {
+                "relativePath": "src/utils/curry.js",
+                "test": false,
+                "name": "curry.js"
+            },
+            {
+                "relativePath": "test/utils/currySpec.js",
+                "test": true,
+                "name": "currySpec.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/curry.js"
+    },
+    "global/create-chained-function": {
+        "files": [
+            {
+                "relativePath": "src/utils/createChainedFunction.js",
+                "test": false,
+                "name": "createChainedFunction.js"
+            },
+            {
+                "relativePath": "test/utils/createChainedFunctionSpec.js",
+                "test": true,
+                "name": "createChainedFunctionSpec.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/createChainedFunction.js"
+    },
+    "global/split-component-props": {
+        "files": [
+            {
+                "relativePath": "src/utils/splitComponentProps.js",
+                "test": false,
+                "name": "splitComponentProps.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/splitComponentProps.js"
+    },
+    "style/add-style": {
+        "files": [
+            {
+                "relativePath": "src/utils/addStyle.js",
+                "test": false,
+                "name": "addStyle.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/addStyle.js"
+    },
+    "style/bs-class": {
+        "files": [
+            {
+                "relativePath": "src/utils/bsClass.js",
+                "test": false,
+                "name": "bsClass.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/bsClass.js"
+    },
+    "style/bs-sizes": {
+        "files": [
+            {
+                "relativePath": "src/utils/bsSizes.js",
+                "test": false,
+                "name": "bsSizes.js"
+            },
+            {
+                "relativePath": "test/utils/bsSizesSpec.js",
+                "test": true,
+                "name": "bsSizesSpec.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/bsSizes.js"
+    },
+    "style/bs-styles": {
+        "files": [
+            {
+                "relativePath": "src/utils/bsStyles.js",
+                "test": false,
+                "name": "bsStyles.js"
+            },
+            {
+                "relativePath": "test/utils/bsStylesSpec.js",
+                "test": true,
+                "name": "bsStylesSpec.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/bsStyles.js"
+    },
+    "style/get-class-set": {
+        "files": [
+            {
+                "relativePath": "src/utils/getClassSet.js",
+                "test": false,
+                "name": "getClassSet.js"
+            },
+            {
+                "relativePath": "test/utils/getClassSetSpec.js",
+                "test": true,
+                "name": "getClassSetSpec.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/getClassSet.js"
+    },
+    "style/prefix": {
+        "files": [
+            {
+                "relativePath": "src/utils/prefix.js",
+                "test": false,
+                "name": "prefix.js"
+            },
+            {
+                "relativePath": "test/utils/prefixSpec.js",
+                "test": true,
+                "name": "prefixSpec.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/prefix.js"
+    },
+    "style/split-bs-props": {
+        "files": [
+            {
+                "relativePath": "src/utils/splitBsProps.js",
+                "test": false,
+                "name": "splitBsProps.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/splitBsProps.js"
+    },
+    "style/config": {
+        "files": [
+            {
+                "relativePath": "src/utils/StyleConfig.js",
+                "test": false,
+                "name": "StyleConfig.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/StyleConfig.js"
+    },
+    "global/deprecation-warning": {
+        "files": [
+            {
+                "relativePath": "src/utils/deprecationWarning.js",
+                "test": false,
+                "name": "deprecationWarning.js"
+            },
+            {
+                "relativePath": "test/utils/deprecationWarningSpec.js",
+                "test": true,
+                "name": "deprecationWarningSpec.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/deprecationWarning.js"
+    },
+    "string/capitalize": {
+        "files": [
+            {
+                "relativePath": "src/utils/capitalize.js",
+                "test": false,
+                "name": "capitalize.js"
+            },
+            {
+                "relativePath": "test/utils/capitalizeSpec.js",
+                "test": true,
+                "name": "capitalizeSpec.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/capitalize.js"
+    },
+    "transition-events/detect-events": {
+        "files": [
+            {
+                "relativePath": "src/utils/detectEvents.js",
+                "test": false,
+                "name": "detectEvents.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/detectEvents.js"
+    },
+    "transition-events/remove-end-event-listener": {
+        "files": [
+            {
+                "relativePath": "src/utils/removeEndEventListener.js",
+                "test": false,
+                "name": "removeEndEventListener.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/removeEndEventListener.js"
+    },
+    "transition-events/add-end-event-listener": {
+        "files": [
+            {
+                "relativePath": "src/utils/addEndEventListener.js",
+                "test": false,
+                "name": "addEndEventListener.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/addEndEventListener.js"
+    },
+    "prop-types/required-roles": {
+        "files": [
+            {
+                "relativePath": "src/utils/requiredRoles.js",
+                "test": false,
+                "name": "requiredRoles.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/requiredRoles.js"
+    },
+    "prop-types/exclusive-roles": {
+        "files": [
+            {
+                "relativePath": "src/utils/exclusiveRoles.js",
+                "test": false,
+                "name": "exclusiveRoles.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/exclusiveRoles.js"
+    },
+    "react-bootstrap.element-children/element-children/some@1": {
+        "files": [
+            {
+                "name": "some.js",
+                "relativePath": "src/some.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/some.js",
+        "rootDir": "components/element-children/some"
+    },
+    "react-bootstrap.element-children/element-children/map@1": {
+        "files": [
+            {
+                "name": "map.js",
+                "relativePath": "src/map.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/map.js",
+        "rootDir": "components/element-children/map"
+    },
+    "react-bootstrap.element-children/element-children/count@1": {
+        "files": [
+            {
+                "name": "count.js",
+                "relativePath": "src/count.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/count.js",
+        "rootDir": "components/element-children/count"
+    },
+    "react-bootstrap.element-children/element-children/for-each@1": {
+        "files": [
+            {
+                "name": "for-each.js",
+                "relativePath": "src/for-each.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/for-each.js",
+        "rootDir": "components/element-children/for-each"
+    },
+    "react-bootstrap.element-children/element-children/every@1": {
+        "files": [
+            {
+                "name": "every.js",
+                "relativePath": "src/every.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/every.js",
+        "rootDir": "components/element-children/every"
+    },
+    "react-bootstrap.element-children/element-children/find@1": {
+        "files": [
+            {
+                "name": "find.js",
+                "relativePath": "src/find.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/find.js",
+        "rootDir": "components/element-children/find"
+    },
+    "react-bootstrap.element-children/element-children/to-array@1": {
+        "files": [
+            {
+                "name": "to-array.js",
+                "relativePath": "src/to-array.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/to-array.js",
+        "rootDir": "components/element-children/to-array"
+    },
+    "helpers/render": {
+        "files": [
+            {
+                "relativePath": "src/utils/render.js",
+                "test": false,
+                "name": "render.js"
+            }
+        ],
+        "origin": "AUTHORED",
+        "mainFile": "src/utils/render.js"
+    },
+    "bit.env/testers/mocha-react@1": {
+        "files": [
+            {
+                "name": "react.js",
+                "relativePath": "react.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "react.js",
+        "rootDir": "components/testers/mocha-react"
+    }
+}

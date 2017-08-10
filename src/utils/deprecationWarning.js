@@ -1,3 +1,8 @@
+/**
+ * ## Adds deprecation warning message
+ *
+ */
+
 import warning from 'warning';
 
 let warned = {};

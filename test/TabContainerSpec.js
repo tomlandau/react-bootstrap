@@ -1,11 +1,16 @@
 import React from 'react';
 import tsp from 'teaspoon';
+import {expect, should} from 'chai'
+import sinon from 'sinon';
 
 import Nav from '../src/Nav';
 import NavItem from '../src/NavItem';
 import TabPane from '../src/TabPane';
 import TabContent from '../src/TabContent';
 import TabContainer from '../src/TabContainer';
+
+should();
+mockDom('<html><body></body></html>');
 
 const s = tsp.selector;
 

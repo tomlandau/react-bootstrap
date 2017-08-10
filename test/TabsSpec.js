@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, expect} from 'chai';
 
 import Nav from '../src/Nav';
 import NavItem from '../src/NavItem';
 import Tab from '../src/Tab';
 import TabPane from '../src/TabPane';
 import Tabs from '../src/Tabs';
-import ValidComponentChildren from '../src/utils/ValidComponentChildren';
+import count from '../components/element-children/count';
 
-import { render } from './helpers';
+import render from '../src/utils/render';
+mockDom('<html><body></body></html>');
 
 describe('<Tabs>', () => {
   it('Should show the correct tab', () => {
@@ -39,7 +41,7 @@ describe('<Tabs>', () => {
     );
 
     const nav = ReactTestUtils.findRenderedComponentWithType(instance, Nav);
-    assert.equal(ValidComponentChildren.count(nav.props.children), 2);
+    assert.equal(count(nav.props.children), 2);
   });
 
   it('Should allow tab to have React components', () => {

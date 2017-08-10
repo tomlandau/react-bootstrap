@@ -1,3 +1,12 @@
+/**
+ * # General style configurations for react bootstrap styles.
+ * ## What's inside?
+ * * Size
+ * * SIZE_MAP
+ * * DEVICE_SIZES
+ * * State
+ * * Style
+ */
 export const Size = {
   LARGE: 'large',
   SMALL: 'small',

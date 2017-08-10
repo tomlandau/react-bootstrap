@@ -11,7 +11,7 @@ const idPropType = PropTypes.oneOfType([
 
 const propTypes = {
   /**
-   * HTML id attribute, required if no `generateChildId` prop
+   * @property {custom} id - HTML id attribute, required if no `generateChildId` prop
    * is specified.
    */
   id(props, ...args) {
@@ -33,7 +33,7 @@ const propTypes = {
   },
 
   /**
-   * A function that takes an `eventKey` and `type` and returns a unique id for
+   * @property {func} generateChildId - A function that takes an `eventKey` and `type` and returns a unique id for
    * child tab `<NavItem>`s and `<TabPane>`s. The function _must_ be a pure
    * function, meaning it should always return the _same_ id for the same set
    * of inputs. The default value requires that an `id` to be set for the
@@ -46,14 +46,14 @@ const propTypes = {
   generateChildId: PropTypes.func,
 
   /**
-   * A callback fired when a tab is selected.
+   * @property {func} onSelect - A callback fired when a tab is selected.
    *
    * @controllable activeKey
    */
   onSelect: PropTypes.func,
 
   /**
-   * The `eventKey` of the currently active tab.
+   * @property {*} activeKey - The `eventKey` of the currently active tab.
    *
    * @controllable onSelect
    */
@@ -69,6 +69,40 @@ const childContextTypes = {
   }),
 };
 
+/**
+ * Represents a container for a tab - useful for complex and custom layouts.
+ * Using `TabContainer`, `TabContent`, and `TabPane` components along with any style of `Nav` allow you to quickly piece together your own Tabs component with additional markup needed.
+ * Just create a set of NavItems each with an eventKey corresponding to the `eventKey` of a `TabPane`. Wrap the whole thing in a `TabContainer` and you have fully functioning custom tabs component. Check out the below example making use of the grid system and pills.
+ @example
+ * const tabsInstance = (
+ *  <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+ *    <Row className="clearfix">
+ *      <Col sm={4}>
+ *        <Nav bsStyle="pills" stacked>
+ *          <NavItem eventKey="first">
+ *            Tab 1
+ *          </NavItem>
+ *          <NavItem eventKey="second">
+ *            Tab 2
+ *          </NavItem>
+ *        </Nav>
+ *      </Col>
+ *      <Col sm={8}>
+ *        <Tab.Content animation>
+ *          <Tab.Pane eventKey="first">
+ *            Tab 1 content
+ *          </Tab.Pane>
+ *          <Tab.Pane eventKey="second">
+ *            Tab 2 content
+ *          </Tab.Pane>
+ *        </Tab.Content>
+ *      </Col>
+ *    </Row>
+ *  </Tab.Container>
+ * );
+ * 
+ * ReactDOM.render(tabsInstance, mountNode);
+ */
 class TabContainer extends React.Component {
   getChildContext() {
     const { activeKey, onSelect, generateChildId, id } = this.props;

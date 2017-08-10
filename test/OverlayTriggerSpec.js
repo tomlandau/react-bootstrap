@@ -2,12 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, expect, should} from 'chai';
+import sinon from 'sinon';
 
 import OverlayTrigger from '../src/OverlayTrigger';
 import Popover from '../src/Popover';
 import Tooltip from '../src/Tooltip';
-
-import { render } from './helpers';
+import render from '../src/utils/render';
+mockDom('<html><body></body></html>');
+should();
 
 describe('<OverlayTrigger>', () => {
   // Swallow extra props.

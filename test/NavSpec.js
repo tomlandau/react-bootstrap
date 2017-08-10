@@ -2,11 +2,12 @@ import keycode from 'keycode';
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import tsp from 'teaspoon';
+import {expect, assert} from 'chai'
+import sinon from 'sinon';
 
 import Nav from '../src/Nav';
 import NavItem from '../src/NavItem';
-
-import { shouldWarn } from './helpers';
+mockDom('<html><body></body></html>');
 
 describe('<Nav>', () => {
   it('Should set the correct item active', () => {
@@ -107,11 +108,13 @@ describe('<Nav>', () => {
   });
 
   it('Should warn when attempting to use a justified navbar nav', () => {
-    shouldWarn('justified navbar `Nav`s are not supported');
+    const spy = sinon.spy(console, 'error');
 
     ReactTestUtils.renderIntoDocument(
       <Nav navbar justified />
     );
+
+    expect(spy.calledWithMatch(sinon.match(/(justified navbar `Nav`s are not supported)/))).to.be.ok;
   });
 
   describe('keyboard navigation', () => {

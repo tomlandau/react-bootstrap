@@ -1,15 +1,16 @@
 import React from 'react';
 import $ from 'teaspoon';
+import {expect} from 'chai';
 
-import FormControl from '../src/FormControl';
+import FormControlStatic from '../src/FormControlStatic';
 
-describe('<FormControl.Static>', () => {
+describe('<FormControlStatic>', () => {
   it('should render correctly', () => {
     expect(
       $(
-        <FormControl.Static name="foo" className="my-form-control-static">
+        <FormControlStatic name="foo" className="my-form-control-static">
           Static text
-        </FormControl.Static>
+        </FormControlStatic>
       )
         .shallowRender()
         .single('.form-control-static.my-form-control-static')
@@ -26,9 +27,9 @@ describe('<FormControl.Static>', () => {
 
     expect(
       $(
-        <FormControl.Static componentClass={MyComponent}>
+        <FormControlStatic componentClass={MyComponent}>
           Static text
-        </FormControl.Static>
+        </FormControlStatic>
       )
         .shallowRender()
         .single($.s`${MyComponent}.form-control-static`)

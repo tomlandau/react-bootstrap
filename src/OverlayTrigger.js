@@ -27,7 +27,8 @@ const triggerType = PropTypes.oneOf(['click', 'hover', 'focus']);
 const propTypes = {
   ...Overlay.propTypes,
 
-   /**
+  /**
+   * @property {triggerType | array<triggerType>} trigger - Default: ['hover', 'focus']
    * Specify which action or actions trigger Overlay visibility
    */
   trigger: PropTypes.oneOfType([
@@ -35,27 +36,28 @@ const propTypes = {
   ]),
 
   /**
-   * A millisecond delay amount to show and hide the Overlay once triggered
+   * @property {number} delay - A millisecond delay amount to show and hide the Overlay once triggered
    */
   delay: PropTypes.number,
   /**
-   * A millisecond delay amount before showing the Overlay once triggered.
+   * @property {number} delayShow - A millisecond delay amount before showing the Overlay once triggered.
    */
   delayShow: PropTypes.number,
   /**
-   * A millisecond delay amount before hiding the Overlay once triggered.
+   * @property {number} delayHide - A millisecond delay amount before hiding the Overlay once triggered.
    */
   delayHide: PropTypes.number,
 
   // FIXME: This should be `defaultShow`.
   /**
+   * @property {boolean} defaultOverlayShown - Default: `false`.
    * The initial visibility state of the Overlay. For more nuanced visibility
    * control, consider using the Overlay component directly.
    */
   defaultOverlayShown: PropTypes.bool,
 
   /**
-   * An element or text to overlay next to the target.
+   * @property {node} overlay - An element or text to overlay next to the target. Required.
    */
   overlay: PropTypes.node.isRequired,
 
@@ -100,6 +102,52 @@ const defaultProps = {
   trigger: ['hover', 'focus'],
 };
 
+/**
+ * # OverlayTrigger
+ * Used for triggering overlays such as ToolTips, Popovers, and Modals.
+ * 
+ * &nbsp;
+ * ## Tooltips example:
+ * Attach and position tooltips with OverlayTrigger.
+ * ```js
+ * const tooltip = (
+ *  <Tooltip id="tooltip"><strong>Holy guacamole!</strong> Check this info.</Tooltip>
+ * );
+ *
+ * const positionerInstance = (
+ *  <ButtonToolbar>
+ *    <OverlayTrigger placement="left" overlay={tooltip}>
+ *      <Button bsStyle="default">Holy guacamole!</Button>
+ *    </OverlayTrigger>
+ *
+ *    <OverlayTrigger placement="top" overlay={tooltip}>
+ *      <Button bsStyle="default">Holy guacamole!</Button>
+ *    </OverlayTrigger>
+ *
+ *    <OverlayTrigger placement="bottom" overlay={tooltip}>
+ *      <Button bsStyle="default">Holy guacamole!</Button>
+ *    </OverlayTrigger>
+ *
+ *    <OverlayTrigger placement="right" overlay={tooltip}>
+ *      <Button bsStyle="default">Holy guacamole!</Button>
+ *    </OverlayTrigger>
+ *  </ButtonToolbar>
+ * );
+ *
+ * ReactDOM.render(positionerInstance, mountNode);
+ * ```
+ * 
+ * @property {boolean | elementType} animation - Default: fade - Use animation
+ * @property {function} onEnter - Callback fired before the Overlay transitions in
+ * @property {function} onEntered - Callback fired after the Overlay finishes transitioning in
+ * @property {function} onEntering - Callback fired as the Overlay begins to transition in
+ * @property {function} onExit - Callback fired right before the Overlay transitions out
+ * @property {function} onExited - Callback fired after the Overlay finishes transitioning out
+ * @property {function} onExiting - Callback fired as the Overlay begins to transition out
+ * @property {'top'|'right'|'bottom'|'left'} placement - Default: 'right' - Sets the direction of the Overlay.
+ * @property {boolean} rootClose - Default: false - Specify whether the overlay should trigger onHide when the user clicks outside the overlay
+ * @bit
+ */
 class OverlayTrigger extends React.Component {
   constructor(props, context) {
     super(props, context);

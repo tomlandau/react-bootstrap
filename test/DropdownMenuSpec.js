@@ -3,11 +3,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import tsp from 'teaspoon';
+import sinon from 'sinon';
+import {should, assert} from 'chai';
 
 import DropdownMenu from '../src/DropdownMenu';
 import MenuItem from '../src/MenuItem';
+should();
 
-import { getOne } from './helpers';
+mockDom('<html><body></body></html>');
+
+function getOne(collection) {
+  expect(collection.length).to.equal(1);
+  return collection[0];
+}
+
 
 describe('<Dropdown.Menu>', () => {
   const simpleMenu = (

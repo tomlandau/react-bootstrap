@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Row from '../src/Row';
+mockDom('<html><body></body></html>');
 
 describe('Row', () => {
   it('uses "div" by default', () => {

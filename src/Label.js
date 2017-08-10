@@ -1,10 +1,54 @@
 import classNames from 'classnames';
 import React from 'react';
 
-import { bsClass, bsStyles, getClassSet, splitBsProps }
-  from './utils/bootstrapUtils';
+import bsClass from './utils/bsClass';
+import bsStyles from './utils/bsStyles';
+import getClassSet from './utils/getClassSet';
+import {splitBsProps} from './utils/splitBsProps';
 import { State, Style } from './utils/StyleConfig';
 
+/**
+ * # Create a `<Label>label</Label>` to highlight information.
+ * 
+ * &nbsp;
+ * ## Example
+ * ```js
+ * const labelInstance = (
+ *  <div>
+ *    <h1>Label <Label>New</Label></h1>
+ *    <h2>Label <Label>New</Label></h2>
+ *    <h3>Label <Label>New</Label></h3>
+ *    <h4>Label <Label>New</Label></h4>
+ *    <h5>Label <Label>New</Label></h5>
+ *    <p>Label <Label>New</Label></p>
+ *  </div>
+ * );
+ * 
+ * ReactDOM.render(labelInstance, mountNode);
+ * ```
+ * 
+ * &nbsp;
+ * 
+ * ## Available variations
+ * Add any of the below mentioned modifier classes to change the appearance of a label.
+ * ```js
+ * const labelVariationInstance = (
+ *  <div>
+ *    <Label bsStyle="default">Default</Label>&nbsp;
+ *    <Label bsStyle="primary">Primary</Label>&nbsp;
+ *    <Label bsStyle="success">Success</Label>&nbsp;
+ *    <Label bsStyle="info">Info</Label>&nbsp;
+ *    <Label bsStyle="warning">Warning</Label>&nbsp;
+ *    <Label bsStyle="danger">Danger</Label>
+ *  </div>
+ * );
+​ * 
+ * ReactDOM.render(labelVariationInstance, mountNode);
+ * ```
+ * 
+ * @property {string} bsClass - Base CSS class and prefix for the component. Generally one should only change `bsClass` to provide new, non-Bootstrap, CSS styles for a component. Default is `label`.
+ * @property {'success'|'warning'|'danger'|'info'|'default'|'primary'} bsStyle - Component visual or contextual style variants.
+ */
 class Label extends React.Component {
   hasContent(children) {
     let result = false;

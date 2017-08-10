@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Col from '../src/Col';
+mockDom('<html><body></body></html>');
 
 describe('Col', () => {
   it('Should set Offset of zero', () => {

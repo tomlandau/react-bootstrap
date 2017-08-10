@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Clearfix from '../src/Clearfix';
+mockDom('<html><body></body></html>');
 
 describe('<Clearfix>', () => {
   it('uses "div" by default', () => {

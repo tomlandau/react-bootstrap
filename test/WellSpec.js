@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Well from '../src/Well';
+mockDom('<html><body></body></html>');
 
 describe('Well', () => {
   it('Should output a well with content', () => {

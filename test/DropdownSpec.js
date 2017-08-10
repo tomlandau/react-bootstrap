@@ -3,13 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import tsp from 'teaspoon';
+import {assert, should, expect} from 'chai';
+import sinon from 'sinon';
 
 import Dropdown from '../src/Dropdown';
 import DropdownMenu from '../src/DropdownMenu';
 import Grid from '../src/Grid';
 import MenuItem from '../src/MenuItem';
-
-import { shouldWarn } from './helpers';
+mockDom('<html><body></body></html>');
+should();
+const sandbox = sinon.sandbox.create();
 
 class CustomMenu extends React.Component {
   render() {
@@ -41,6 +44,10 @@ describe('<Dropdown>', () => {
       {dropdownChildren}
     </Dropdown>
   );
+
+  beforeEach(() => {  
+    sandbox.restore();
+  });
 
   it('renders div with dropdown class', () => {
     const instance = ReactTestUtils.renderIntoDocument(simpleDropdown);
@@ -348,8 +355,7 @@ describe('<Dropdown>', () => {
   describe('PropType validation', () => {
     describe('children', () => {
       it('menu is exclusive', () => {
-        shouldWarn('Duplicate children');
-        shouldWarn('bsRole: menu');
+        const spy = sandbox.spy(console, 'error');
 
         ReactTestUtils.renderIntoDocument(
           <Dropdown id="test">
@@ -358,11 +364,13 @@ describe('<Dropdown>', () => {
             <Dropdown.Menu />
           </Dropdown>
         );
+
+        expect(spy.calledWithMatch(sinon.match(/(Duplicate children)/))).to.be.ok; 
+        expect(spy.calledWithMatch(sinon.match(/(bsRole: menu)/))).to.be.ok; 
       });
 
       it('menu is required', () => {
-        shouldWarn('Missing a required child');
-        shouldWarn('bsRole: menu');
+        const spy = sandbox.spy(console, 'error');
 
         // Dropdowns can't render without a menu.
         try {
@@ -372,6 +380,9 @@ describe('<Dropdown>', () => {
             </Dropdown>
           );
         } catch (e) {} // eslint-disable-line no-empty
+
+        expect(spy.calledWithMatch(sinon.match(/(Missing a required child)/))).to.be.ok; 
+        expect(spy.calledWithMatch(sinon.match(/(bsRole: menu)/))).to.be.ok; 
       });
 
       it('toggles are not exclusive', () => {
@@ -385,14 +396,16 @@ describe('<Dropdown>', () => {
       });
 
       it('toggle is required', () => {
-        shouldWarn('Missing a required child');
-        shouldWarn('bsRole: toggle');
+        const spy = sandbox.spy(console, 'error');
 
         ReactTestUtils.renderIntoDocument(
           <Dropdown id="test">
             <Dropdown.Menu />
           </Dropdown>
         );
+
+        expect(spy.calledWithMatch(sinon.match(/(Missing a required child)/))).to.be.ok; 
+        expect(spy.calledWithMatch(sinon.match(/(bsRole: toggle)/))).to.be.ok; 
       });
     });
   });
@@ -419,6 +432,8 @@ describe('<Dropdown>', () => {
   });
 
   it('warns when a string ref is specified', () => {
+    const spy = sandbox.spy(console, 'error');
+
     class RefDropdown extends React.Component {
       render() {
         return (
@@ -430,9 +445,9 @@ describe('<Dropdown>', () => {
       }
     }
 
-    shouldWarn('String refs are not supported');
-
     tsp(<RefDropdown />).render().unwrap();
+
+    expect(spy.calledWithMatch(sinon.match(/(String refs are not supported)/))).to.be.ok; 
   });
 
   describe('focusable state', () => {

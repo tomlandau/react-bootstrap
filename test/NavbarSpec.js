@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import sinon from 'sinon';
+import {assert, expect} from 'chai';
 
 import Nav from '../src/Nav';
 import Navbar from '../src/Navbar';
 import NavItem from '../src/NavItem';
 
-import { addStyle } from '../src/utils/bootstrapUtils';
+import addStyle from '../src/utils/addStyle';
 
-import { getOne } from './helpers';
+mockDom('<html><body></body></html>');
+
+function getOne(collection) {
+  expect(collection.length).to.equal(1);
+  return collection[0];
+}
 
 describe('<Navbar>', () => {
   it('Should create nav element', () => {

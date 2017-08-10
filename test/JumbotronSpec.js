@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Jumbotron from '../src/Jumbotron';
+mockDom('<html><body></body></html>');
 
 describe('<Jumbotron>', () => {
   it('Should output a div with content', () => {

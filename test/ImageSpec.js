@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {should, assert} from 'chai';
 
 import Image from '../src/Image';
+mockDom('<html><body></body></html>');
+should();
 
 describe('Image', () => {
 

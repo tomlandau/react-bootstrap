@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, expect} from 'chai';
 
 import Panel from '../src/Panel';
 import Table from '../src/Table';
+
+mockDom('<html><body></body></html>');
 
 describe('<Panel>', () => {
   it('Should have class and body', () => {

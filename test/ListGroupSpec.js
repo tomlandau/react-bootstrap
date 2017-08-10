@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import ListGroup from '../src/ListGroup';
 import ListGroupItem from '../src/ListGroupItem';
+mockDom('<html><body></body></html>');
 
 describe('<ListGroup>', () => {
 

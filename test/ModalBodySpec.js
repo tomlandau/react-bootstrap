@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai'
 
-import Modal from '../src/Modal';
+import ModalBody from '../src/ModalBody';
+mockDom('<html><body></body></html>');
 
-describe('Modal.Body', () => {
+describe('ModalBody', () => {
   it('uses "div" by default', () => {
     const instance = ReactTestUtils.renderIntoDocument(
-      <Modal.Body />
+      <ModalBody />
     );
 
     assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'DIV');
@@ -15,7 +17,7 @@ describe('Modal.Body', () => {
 
   it('has "modal-body" class', () => {
     const instance = ReactTestUtils.renderIntoDocument(
-      <Modal.Body />
+      <ModalBody />
     );
 
     assert.include(ReactDOM.findDOMNode(instance).className, 'modal-body');
@@ -23,7 +25,7 @@ describe('Modal.Body', () => {
 
   it('should merge additional classes passed in', () => {
     const instance = ReactTestUtils.renderIntoDocument(
-      <Modal.Body className="custom-class" />
+      <ModalBody className="custom-class" />
     );
     const classes = ReactDOM.findDOMNode(instance).className;
 
@@ -33,7 +35,7 @@ describe('Modal.Body', () => {
 
   it('should allow custom elements instead of "div"', () => {
     const instance = ReactTestUtils.renderIntoDocument(
-      <Modal.Body componentClass="section" />
+      <ModalBody componentClass="section" />
     );
 
     assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'SECTION');
@@ -41,9 +43,9 @@ describe('Modal.Body', () => {
 
   it('should render children', () => {
     const instance = ReactTestUtils.renderIntoDocument(
-      <Modal.Body>
+      <ModalBody>
         <strong>Content</strong>
-      </Modal.Body>
+      </ModalBody>
     );
     assert.ok(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'strong'));
   });

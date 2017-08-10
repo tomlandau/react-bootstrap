@@ -1,10 +1,11 @@
 import React from 'react';
 import $ from 'teaspoon';
+import {expect} from 'chai';
+import sinon from 'sinon';
 
 import ControlLabel from '../src/ControlLabel';
 import FormGroup from '../src/FormGroup';
-
-import { shouldWarn } from './helpers';
+mockDom('<html><body></body></html>');
 
 describe('<ControlLabel>', () => {
   it('should render correctly', () => {
@@ -41,7 +42,7 @@ describe('<ControlLabel>', () => {
   });
 
   it('should prefer explicit htmlFor', () => {
-    shouldWarn('ignored');
+    const spy = sinon.spy(console, 'error');
 
     $(
       <FormGroup controlId="foo">
@@ -52,5 +53,7 @@ describe('<ControlLabel>', () => {
     )
       .render()
       .single('label.control-label[htmlFor="bar"]');
+
+     expect(spy.calledWithMatch(sinon.match(/(ignored)/))).to.be.ok; 
   });
 });

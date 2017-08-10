@@ -10,6 +10,11 @@ const defaultProps = {
   label: 'Close'
 };
 
+/**
+ * # A react component for a close button.
+ * @property {string} label - Button label (required).
+ * @property {func} onClick - onClick handler.
+ */
 class CloseButton extends React.Component {
   render() {
     const { label, onClick } = this.props;

@@ -1,27 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
-import Media from '../src/Media';
+import MediaListItem from '../src/MediaListItem';
+mockDom('<html><body></body></html>');
 
-describe(`Media.ListItem`, () => {
+describe(`MediaListItem`, () => {
   it(`uses "li"`, () => {
     const instance = ReactTestUtils.renderIntoDocument(
-        <Media.ListItem/>
+        <MediaListItem/>
       );
 
     assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'LI');
   });
   it(`has "media" class`, () => {
     const instance = ReactTestUtils.renderIntoDocument(
-        <Media.ListItem/>
+        <MediaListItem/>
       );
 
     assert.include(ReactDOM.findDOMNode(instance).className, 'media');
   });
   it(`should merge additional classes passed in`, () => {
     const instance = ReactTestUtils.renderIntoDocument(
-        <Media.ListItem className="custom-class" />
+        <MediaListItem className="custom-class" />
       );
     const classes = ReactDOM.findDOMNode(instance).className;
 
@@ -30,9 +32,9 @@ describe(`Media.ListItem`, () => {
   });
   it(`should render children`, () => {
     const instance = ReactTestUtils.renderIntoDocument(
-        <Media.ListItem>
+        <MediaListItem>
           <strong>Content</strong>
-        </Media.ListItem>
+        </MediaListItem>
       );
     assert.ok(ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'strong'));
   });

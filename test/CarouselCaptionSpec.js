@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
-import Carousel from '../src/Carousel';
+import CarouselCaption from '../src/CarouselCaption';
+mockDom('<html><body></body></html>');
 
-describe('<Carousel.Caption>', () => {
+describe('<CarouselCaption>', () => {
   it('uses "div" by default', () => {
     let instance = ReactTestUtils.renderIntoDocument(
-      <Carousel.Caption />
+      <CarouselCaption />
     );
 
     assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'DIV');
@@ -15,14 +17,14 @@ describe('<Carousel.Caption>', () => {
 
   it('has "carousel-caption" class', () => {
     let instance = ReactTestUtils.renderIntoDocument(
-      <Carousel.Caption>Carousel.Caption content</Carousel.Caption>
+      <CarouselCaption>CarouselCaption content</CarouselCaption>
     );
     assert.equal(ReactDOM.findDOMNode(instance).className, 'carousel-caption');
   });
 
   it('Should merge additional classes passed in', () => {
     let instance = ReactTestUtils.renderIntoDocument(
-      <Carousel.Caption className="bob"/>
+      <CarouselCaption className="bob"/>
     );
     assert.ok(ReactDOM.findDOMNode(instance).className.match(/\bbob\b/));
     assert.ok(ReactDOM.findDOMNode(instance).className.match(/\bcarousel-caption\b/));
@@ -30,7 +32,7 @@ describe('<Carousel.Caption>', () => {
 
   it('allows custom elements instead of "div"', () => {
     let instance = ReactTestUtils.renderIntoDocument(
-      <Carousel.Caption componentClass="section" />
+      <CarouselCaption componentClass="section" />
     );
 
     assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'SECTION');

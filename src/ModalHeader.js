@@ -2,7 +2,9 @@ import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { bsClass, getClassSet, splitBsProps } from './utils/bootstrapUtils';
+import bsClass from './utils/bsClass';
+import getClassSet from './utils/getClassSet';
+import {splitBsProps} from './utils/splitBsProps';
 import createChainedFunction from './utils/createChainedFunction';
 import CloseButton from './CloseButton';
 
@@ -10,19 +12,19 @@ import CloseButton from './CloseButton';
 
 const propTypes = {
   /**
-   * Provides an accessible label for the close
+   * @property {string} closeLabel - Provides an accessible label for the close
    * button. It is used for Assistive Technology when the label text is not
    * readable.
    */
   closeLabel: PropTypes.string,
 
   /**
-   * Specify whether the Component should contain a close button
+   * @property {bool} closeButton - Specify whether the Component should contain a close button
    */
   closeButton: PropTypes.bool,
 
   /**
-   * A Callback fired when the close button is clicked. If used directly inside
+   * @property {func} onHide - A Callback fired when the close button is clicked. If used directly inside
    * a Modal component, the onHide will automatically be propagated up to the
    * parent Modal `onHide`.
    */
@@ -40,6 +42,11 @@ const contextTypes = {
   }),
 };
 
+/**
+ * Represents the header of a modal dialog. For more details, see [here](https://bitsrc.io/react-bootstrap/react-bootstrap/modals/modal).
+ * 
+ * @property {string} bsClass - Base CSS class and prefix for the component. Generally one should only change `bsClass` to provide new, non-Bootstrap, CSS styles for a component. Default is `modal-header`.
+ */
 class ModalHeader extends React.Component {
   render() {
     const {

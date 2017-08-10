@@ -5,10 +5,12 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import RootCloseWrapper from 'react-overlays/lib/RootCloseWrapper';
 
-import { bsClass, getClassSet, prefix, splitBsPropsAndOmit }
-  from './utils/bootstrapUtils';
+import bsClass from './utils/bsClass';
+import getClassSet from './utils/getClassSet';
+import prefix from './utils/prefix';
+import {splitBsPropsAndOmit} from './utils/splitBsProps';
 import createChainedFunction from './utils/createChainedFunction';
-import ValidComponentChildren from './utils/ValidComponentChildren';
+import map from '../components/element-children/map';
 
 const propTypes = {
   open: PropTypes.bool,
@@ -26,6 +28,25 @@ const defaultProps = {
   pullRight: false,
 };
 
+/**
+ * # `<Dropdown.Menu>` represents the menu of a `<Dropdown>` React component.
+ * Children components are `<MenuItem>`s.
+ * @example
+ * ```js
+ *  <Dropdown.Menu>
+ *    <MenuItem eventKey="1">Item 1</MenuItem>
+ *    <MenuItem eventKey="2">Item 2</MenuItem>
+ *    <MenuItem eventKey="3">Item 3</MenuItem>
+ *    <MenuItem eventKey="4">Item 4</MenuItem>
+ *  </Dropdown.Menu>
+ * ```
+ * @property {bool} open
+ * @property {bool} pullRight
+ * @property {func} onClose
+ * @property {string|number} labelledBy
+ * @property {func} onSelect
+ * @property {'click'|'mousedown'} rootCloseEvent
+ */
 class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -123,7 +144,7 @@ class DropdownMenu extends React.Component {
           className={classNames(className, classes)}
           aria-labelledby={labelledBy}
         >
-          {ValidComponentChildren.map(children, child => (
+          {map(children, child => (
             React.cloneElement(child, {
               onKeyDown: createChainedFunction(
                 child.props.onKeyDown, this.handleKeyDown,

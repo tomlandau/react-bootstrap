@@ -1,9 +1,10 @@
 import React from 'react';
 import $ from 'teaspoon';
+import {expect} from 'chai';
+import sinon from 'sinon';
 
 import Checkbox from '../src/Checkbox';
-
-import { shouldWarn } from './helpers';
+mockDom('<html><body></body></html>');
 
 describe('<Checkbox>', () => {
   it('should render correctly', () => {
@@ -42,13 +43,15 @@ describe('<Checkbox>', () => {
   });
 
   it('should not support validation state when inline', () => {
-    shouldWarn('ignored');
+    const spy = sinon.spy(console, 'error');
 
     $(
       <Checkbox inline validationState="success" />
     )
       .shallowRender()
       .none('.has-success');
+
+      expect(spy.calledWithMatch(sinon.match(/(ignored)/))).to.be.ok;
   });
 
   it('should support inputRef', () => {

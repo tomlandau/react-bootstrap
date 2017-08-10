@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai'
 
 import Tab from '../src/Tab';
+mockDom('<html><body></body></html>');
 
 describe('<Tab>', () => {
   it('Should have class', () => {

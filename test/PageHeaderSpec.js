@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import PageHeader from '../src/PageHeader';
+mockDom('<html><body></body></html>');
 
 describe('PageHeader', () => {
   it('Should output a div with content', () => {

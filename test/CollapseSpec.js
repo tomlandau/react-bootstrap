@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import sinon from 'sinon';
+import {assert, expect} from 'chai';
 
 import Collapse from '../src/Collapse';
 

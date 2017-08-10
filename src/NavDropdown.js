@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 import Dropdown from './Dropdown';
 import splitComponentProps from './utils/splitComponentProps';
-import ValidComponentChildren from './utils/ValidComponentChildren';
+import some from '../components/element-children/some';
+import map from '../components/element-children/map';
 
 const propTypes = {
   ...Dropdown.propTypes,
@@ -21,6 +22,35 @@ const propTypes = {
   children: PropTypes.node,
 };
 
+/**
+ * Add dropdowns to a `<Nav>` the `NavDropdown` component.
+ * @example
+ * const NavDropdownExample = React.createClass({
+ *  handleSelect(eventKey) {
+ *    event.preventDefault();
+ *    alert(`selected ${eventKey}`);
+ *  },
+ * 
+ *  render() {
+ *    return (
+ *      <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
+ *        <NavItem eventKey="1" href="/home">NavItem 1 content</NavItem>
+ *        <NavItem eventKey="2" title="Item">NavItem 2 content</NavItem>
+ *        <NavItem eventKey="3" disabled>NavItem 3 content</NavItem>
+ *        <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
+ *          <MenuItem eventKey="4.1">Action</MenuItem>
+ *          <MenuItem eventKey="4.2">Another action</MenuItem>
+ *          <MenuItem eventKey="4.3">Something else here</MenuItem>
+ *          <MenuItem divider />
+ *          <MenuItem eventKey="4.4">Separated link</MenuItem>
+ *        </NavDropdown>
+ *      </Nav>
+ *    );
+ *  }
+ * });
+ * 
+ * ReactDOM.render(<NavDropdownExample />, mountNode);
+ */
 class NavDropdown extends React.Component {
   isActive({ props }, activeKey, activeHref) {
     if (
@@ -31,7 +61,7 @@ class NavDropdown extends React.Component {
       return true;
     }
 
-    if (ValidComponentChildren.some(props.children, (child) => (
+    if (some(props.children, (child) => (
       this.isActive(child, activeKey, activeHref)
     ))) {
       return true;
@@ -73,7 +103,7 @@ class NavDropdown extends React.Component {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          {ValidComponentChildren.map(children, child => (
+          {map(children, child => (
             React.cloneElement(child, {
               active: this.isActive(child, activeKey, activeHref),
             })

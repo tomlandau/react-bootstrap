@@ -1,0 +1,25 @@
+{
+    "sources": {
+        "impl": "impl.js",
+        "spec": "spec.js"
+    },
+    "env": {
+        "compiler": "bit.env/builders/react@1",
+        "tester": "bit.env/testers/mocha-react@1"
+    },
+    "dependencies": {
+        "react-bootstrap.element-children/element-children/filter": "1",
+        "react-bootstrap.element-children/element-children/some": "1",
+        "react-bootstrap.element-children/element-children/map": "1",
+        "react-bootstrap.element-children/element-children/count": "1",
+        "react-bootstrap.element-children/element-children/for-each": "1",
+        "react-bootstrap.element-children/element-children/every": "1",
+        "react-bootstrap.element-children/element-children/find": "1",
+        "react-bootstrap.element-children/element-children/to-array": "1",
+        "bit.env/testers/mocha-react": "1"
+    },
+    "structure": "components/{namespace}/{name}",
+    "dist": {
+        "target": "dist"
+    }
+}

@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import $ from 'teaspoon';
+import {assert} from 'chai';
 
 import FormControl from '../src/FormControl';
 import FormGroup from '../src/FormGroup';
+mockDom('<html><body></body></html>');
 
 describe('<FormGroup>', () => {
   it('renders children', () => {

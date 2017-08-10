@@ -1,7 +1,9 @@
 import React from 'react';
 import $ from 'teaspoon';
+import {expect} from 'chai'
 
 import HelpBlock from '../src/HelpBlock';
+mockDom('<html><body></body></html>');
 
 describe('<HelpBlock>', () => {
   it('should render correctly', () => {

@@ -1,5 +1,7 @@
 /* eslint no-new-func: 0 */
 import createChainedFunction from '../../src/utils/createChainedFunction';
+import {expect, should} from 'chai';
+should();
 
 describe('createChainedFunction', () => {
   it('returns null with no arguments', () => {

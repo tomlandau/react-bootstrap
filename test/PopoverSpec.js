@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Popover from '../src/Popover';
+mockDom('<html><body></body></html>');
 
 describe('Popover', () => {
   it('Should output a popover title and content', () => {

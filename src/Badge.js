@@ -2,7 +2,10 @@ import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { bsClass, getClassSet, splitBsProps } from './utils/bootstrapUtils';
+import bsClass from './utils/bsClass';
+import getClassSet from './utils/getClassSet';
+import {splitBsProps} from './utils/splitBsProps';
+
 
 // TODO: `pullRight` doesn't belong here. There's no special handling here.
 
@@ -14,6 +17,22 @@ const defaultProps = {
   pullRight: false,
 };
 
+/**
+ * # Easily highlight new or unread items by adding a `<Badge>` to links, Bootstrap navs, and more.
+ * 
+ * ## Example
+ * ```js
+ *  const badgeInstance = (
+ *  <p>Badges <Badge>42</Badge></p>
+ * );
+ *
+ * ReactDOM.render(badgeInstance, mountNode);
+ * ```
+ * 
+ * > ## Cross-browser compatibility
+ * > Unlike in regular Bootstrap, badges self collapse even in Internet Explorer 8.
+ * 
+ */
 class Badge extends React.Component {
   hasContent(children) {
     let result = false;

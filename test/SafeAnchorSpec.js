@@ -1,7 +1,11 @@
 import React from 'react';
 import tsp from 'teaspoon';
+import sinon from 'sinon';
+import {expect,should} from chai;
+should();
 
 import SafeAnchor from '../src/SafeAnchor';
+mockDom('<html><body></body></html>');
 
 describe('SafeAnchor', () => {
   it('renders an anchor tag', () => {

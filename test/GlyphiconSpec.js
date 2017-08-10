@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Glyphicon from '../src/Glyphicon';
+
+mockDom('<html><body></body></html>');
 
 describe('<Glyphicon>', () => {
   it('Should have correct class', () => {

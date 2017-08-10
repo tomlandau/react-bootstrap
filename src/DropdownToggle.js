@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Button from './Button';
 import SafeAnchor from './SafeAnchor';
 
-import { bsClass as setBsClass } from './utils/bootstrapUtils';
+import setBsClass from './utils/bsClass';
 
 const propTypes = {
   noCaret: PropTypes.bool,
@@ -19,6 +19,36 @@ const defaultProps = {
   bsRole: 'toggle',
 };
 
+/**
+ * # Represents the toggle component of a React dropdown button.
+ * To be used as a child component of [`<Dropdown>`](https://bitsrc.io/react-bootstrap/components/dropdowns/dropdown).
+ * 
+ * &nbsp;
+ * ## Custom use
+ * Instead of using `<DropdownButton>`, you can use the more basic `<DropDown>` component, and then explicitly specify the `<DropdownToggle>` component.
+ * ```js
+ *   <Dropdown id="dropdown-custom-1">
+ *     <Dropdown.Toggle>
+ *       <Glyphicon glyph="star" />
+ *       Pow! Zoom!
+ *     </Dropdown.Toggle>
+ *     <Dropdown.Menu className="super-colors">
+ *       <MenuItem eventKey="1">Action</MenuItem>
+ *       <MenuItem eventKey="2">Another action</MenuItem>
+ *       <MenuItem eventKey="3" active>Active Item</MenuItem>
+ *       <MenuItem divider />
+ *       <MenuItem eventKey="4">Separated link</MenuItem>
+ *     </Dropdown.Menu>
+ *   </Dropdown>
+ * ```
+ * 
+ * &nbsp;
+ * ## props:
+ * @property {bool} noCaret
+ * @property {bool} open
+ * @property {string} title
+ * @property {bool} useAnchor
+ */
 class DropdownToggle extends React.Component {
   render() {
     const {

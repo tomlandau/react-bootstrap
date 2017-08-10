@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, expect} from 'chai';
+import sinon from 'sinon';
 
 import ResponsiveEmbed from '../src/ResponsiveEmbed';
-
-import { shouldWarn } from './helpers';
+mockDom('<html><body></body></html>');
+const sandbox = sinon.sandbox.create();
 
 describe('ResponsiveEmbed', () => {
+  beforeEach(() => {
+    sandbox.restore();
+  });
+
   it('should contain `embed-responsive` class', () => {
     let instance = ReactTestUtils.renderIntoDocument(
       <ResponsiveEmbed a16by9>
@@ -19,23 +25,27 @@ describe('ResponsiveEmbed', () => {
   });
 
   it('should warn if neither `a16by9` nor `a4by3` is set', () => {
-    shouldWarn('Either `a16by9` or `a4by3` must be set.');
+    const spy = sandbox.spy(console, 'error');
 
     ReactTestUtils.renderIntoDocument(
       <ResponsiveEmbed>
         <div />
       </ResponsiveEmbed>
     );
+
+    expect(spy.calledWithMatch(sinon.match(/(Either `a16by9` or `a4by3` must be set.)/))).to.be.ok;
   });
 
   it('should warn about both `a16by9` or `a4by3` attributes set', () => {
-    shouldWarn('Only one of `a16by9` or `a4by3` can be set.');
+    const spy = sandbox.spy(console, 'error');
 
     ReactTestUtils.renderIntoDocument(
       <ResponsiveEmbed a16by9 a4by3>
         <div />
       </ResponsiveEmbed>
     );
+
+    expect(spy.calledWithMatch(sinon.match(/(Only one of `a16by9` or `a4by3` can be set.)/))).to.be.ok;
   });
 
   it('should add `embed-responsive-item` class to child element', () => {

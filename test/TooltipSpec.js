@@ -1,8 +1,10 @@
 import pick from 'lodash/pick';
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, expect} from 'chai';
 
 import Tooltip from '../src/Tooltip';
+mockDom('<html><body></body></html>');
 
 describe('Tooltip', () => {
   it('Should output a tooltip with content', () => {

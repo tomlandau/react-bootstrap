@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert, should, expect} from 'chai';
+import sinon from 'sinon';
 
 import SplitButton from '../src/SplitButton';
 import MenuItem from '../src/MenuItem';
 import Button from '../src/Button';
+should();
+mockDom('<html><body></body></html>');
 
 describe('<SplitButton>', () => {
   const simple = (

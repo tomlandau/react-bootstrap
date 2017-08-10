@@ -20,6 +20,27 @@ const defaultProps = {
   disabled: false
 };
 
+/**
+ * # An item inside a `<Nav>`.
+ * For more info, see [`<Nav>` component page](https://bitsrc.io/react-bootstrap/components/navs/nav-item).
+ * 
+ * &nbsp;
+ * ## Example
+ * ```js
+ * <Nav bsStyle="pills" activeKey={1} onSelect={handleSelect}>
+ *   <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
+ *   <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
+ *   <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+ * </Nav>
+ * ```
+ * @property {bool} active - default is `false`.
+ * @property {bool} disabled - default is `false`.
+ * @property {bool} disabled - default is `false`.
+ * @property {string} href
+ * @property {func} onClick
+ * @property {func} onSelect
+ * @property {string} role
+ */
 class NavItem extends React.Component {
   constructor(props, context) {
     super(props, context);

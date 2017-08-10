@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Label from '../src/Label';
+
+mockDom('<html><body></body></html>');
+
 
 describe('Label', () => {
 

@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {assert} from 'chai';
 
 import Table from '../src/Table';
+mockDom('<html><body></body></html>');
 
 describe('Table', () => {
   it('Should be a table', () => {
