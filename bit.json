@@ -4,8 +4,8 @@
         "spec": "spec.js"
     },
     "env": {
-        "compiler": "bit.env/builders/react@1",
-        "tester": "bit.env/testers/mocha-react@1"
+        "compiler": "bit.envs/compilers/react@1",
+        "tester": "bit.envs/testers/mocha-react@1"
     },
     "dependencies": {
         "react-bootstrap.element-children/element-children/filter": "1",
@@ -15,8 +15,7 @@
         "react-bootstrap.element-children/element-children/for-each": "1",
         "react-bootstrap.element-children/element-children/every": "1",
         "react-bootstrap.element-children/element-children/find": "1",
-        "react-bootstrap.element-children/element-children/to-array": "1",
-        "bit.env/testers/mocha-react": "1"
+        "react-bootstrap.element-children/element-children/to-array": "1"
     },
     "structure": "components/{namespace}/{name}",
     "dist": {
