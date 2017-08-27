@@ -248,6 +248,23 @@
         "origin": "AUTHORED",
         "mainFile": "src/utils/render.js"
     },
+    "react-bootstrap.element-children/element-children/filter@1": {
+        "files": [
+            {
+                "name": "filter.js",
+                "relativePath": "src/filter.js",
+                "test": false
+            },
+            {
+                "name": "filter.spec.js",
+                "relativePath": "tests/filter.spec.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/filter.js",
+        "rootDir": "components/element-children/filter"
+    },
     "react-bootstrap.element-children/element-children/some@1": {
         "files": [
             {
@@ -265,21 +282,101 @@
         "mainFile": "src/some.js",
         "rootDir": "components/element-children/some"
     },
-    "react-bootstrap.element-children/element-children/filter@1": {
+    "react-bootstrap.element-children/element-children/map@1": {
         "files": [
             {
-                "name": "filter.js",
-                "relativePath": "src/filter.js",
+                "name": "map.js",
+                "relativePath": "src/map.js",
                 "test": false
             },
             {
-                "name": "filter.spec.js",
-                "relativePath": "tests/filter.spec.js",
+                "name": "map.spec.js",
+                "relativePath": "tests/map.spec.js",
                 "test": false
             }
         ],
         "origin": "IMPORTED",
-        "mainFile": "src/filter.js",
-        "rootDir": "components/element-children/filter"
+        "mainFile": "src/map.js",
+        "rootDir": "components/element-children/map"
+    },
+    "react-bootstrap.element-children/element-children/count@1": {
+        "files": [
+            {
+                "name": "count.js",
+                "relativePath": "src/count.js",
+                "test": false
+            },
+            {
+                "name": "count.spec.js",
+                "relativePath": "tests/count.spec.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/count.js",
+        "rootDir": "components/element-children/count"
+    },
+    "react-bootstrap.element-children/element-children/for-each@1": {
+        "files": [
+            {
+                "name": "for-each.js",
+                "relativePath": "src/for-each.js",
+                "test": false
+            },
+            {
+                "name": "for-each.spec.js",
+                "relativePath": "tests/for-each.spec.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/for-each.js",
+        "rootDir": "components/element-children/for-each"
+    },
+    "react-bootstrap.element-children/element-children/every@1": {
+        "files": [
+            {
+                "name": "every.js",
+                "relativePath": "src/every.js",
+                "test": false
+            },
+            {
+                "name": "every.spec.js",
+                "relativePath": "tests/every.spec.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/every.js",
+        "rootDir": "components/element-children/every"
+    },
+    "react-bootstrap.element-children/element-children/find@1": {
+        "files": [
+            {
+                "name": "find.js",
+                "relativePath": "src/find.js",
+                "test": false
+            },
+            {
+                "name": "find.spec.js",
+                "relativePath": "tests/find.spec.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/find.js",
+        "rootDir": "components/element-children/find"
+    },
+    "react-bootstrap.element-children/element-children/to-array@1": {
+        "files": [
+            {
+                "name": "to-array.js",
+                "relativePath": "src/to-array.js",
+                "test": false
+            }
+        ],
+        "origin": "IMPORTED",
+        "mainFile": "src/to-array.js",
+        "rootDir": "components/element-children/to-array"
     }
 }

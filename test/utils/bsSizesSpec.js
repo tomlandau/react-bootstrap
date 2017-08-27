@@ -2,23 +2,19 @@ import {expect} from 'chai';
 import React from 'react';
 import sinon from 'sinon';
 import bsSizes from '../../src/utils/bsSizes';
+import render from '../../src/utils/render';
 
-const shouldWarn = (about) => {
-  expect(console.error.calledWith(about)).to.be.true;
-};
-
-let stub = {};
+mockDom('<html><body></body></html>');
+const sandbox = sinon.sandbox.create();
 
 describe('bsSizes', () => {
     beforeEach(() => {
-      stub = this.sinon.stub(console, 'error');
-    });
-
-    afterEach(() => {
-      stub.restore();
+      sandbox.restore();
     });
 
     it('should add size to allowed propTypes', () => {
+      const spy = sandbox.spy(console, 'error');
+
       const Component = () => null;
       bsSizes(['large', 'small'])(Component);
 
@@ -27,8 +23,8 @@ describe('bsSizes', () => {
       React.createElement(Component, { bsSize: 'small' });
       React.createElement(Component, { bsSize: 'sm' });
 
-      shouldWarn('expected one of ["lg","large","sm","small"]');
       React.createElement(Component, { bsSize: 'superSmall' });
+      expect(spy.calledWithMatch('expected one of ["lg","large","sm","small"]')).to.be.ok;
     });
 
     it('should not override other propTypes', () => {
@@ -50,7 +46,7 @@ describe('bsSizes', () => {
     });
 
     it('should work with es6 classes', () => {
-      shouldWarn('expected one of ["smallish","micro","planet"]');
+      const spy = sandbox.spy(console, 'error');
 
       class Component extends React.Component {
         render() { return <span />; }
@@ -63,10 +59,12 @@ describe('bsSizes', () => {
       expect(instance.props.bsSize).to.equal('smallish');
 
       render(<WrappedComponent bsSize="not-smallish" />);
+
+      expect(spy.calledWithMatch('expected one of ["smallish","micro","planet"]')).to.be.ok;
     });
 
     it('should work with createClass', () => {
-      shouldWarn('expected one of ["smallish","micro","planet","big"]');
+      const spy = sandbox.spy(console, 'error');
 
       const Component = bsSizes(['smallish', 'micro', 'planet', 'big'], 'smallish')(
         class extends React.Component {
@@ -79,5 +77,7 @@ describe('bsSizes', () => {
       expect(instance.props.bsSize).to.equal('smallish');
 
       render(<Component bsSize="not-smallish" />);
+
+      expect(spy.calledWithMatch('expected one of ["smallish","micro","planet","big"]')).to.be.ok;
     });
   });

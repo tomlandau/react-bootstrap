@@ -1,32 +1,28 @@
 import {expect} from 'chai';
 import React from 'react';
 import bsStyles from '../../src/utils/bsStyles';
+import render from '../../src/utils/render';
 
-const shouldWarn = (about) => {
-  expect(console.error.calledWith(about)).to.be.true;
-};
-
-let stub = {};
+mockDom('<html><body></body></html>');
+const sandbox = sinon.sandbox.create();
 
 describe('bsStyles', () => {
-    beforeEach(() => {
-      stub = this.sinon.stub(console, 'error');
-    });
-
-    afterEach(() => {
-      stub.restore();
-    });
+  beforeEach(() => {
+    sandbox.restore();
+  });
 
     it('should add style to allowed propTypes', () => {
+      const spy = sandbox.spy(console, 'error');
       const Component = () => null;
       bsStyles(['minimal', 'boss', 'plaid'])(Component);
 
       expect(Component.propTypes).to.exist;
 
       React.createElement(Component, { bsStyle: 'plaid' });
-
-      shouldWarn('expected one of ["minimal","boss","plaid"]');
+      
       React.createElement(Component, { bsStyle: 'not-plaid' });
+
+      expect(spy.calledWithMatch('expected one of ["minimal","boss","plaid"]')).to.be.ok;
     });
 
     it('should not override other propTypes', () => {
@@ -50,7 +46,7 @@ describe('bsStyles', () => {
     });
 
     it('should work with ES classes', () => {
-      shouldWarn('expected one of ["minimal","tweed","plaid"]');
+      const spy = sandbox.spy(console, 'error');
 
       class Component extends React.Component {
         render() { return <span />; }
@@ -63,10 +59,12 @@ describe('bsStyles', () => {
       expect(instance.props.bsStyle).to.equal('plaid');
 
       render(<WrappedComponent bsStyle="not-plaid" />);
+
+      expect(spy.calledWithMatch('expected one of ["minimal","tweed","plaid"]')).to.be.ok;
     });
 
     it('should work with createClass', () => {
-      shouldWarn('expected one of ["minimal","boss","plaid","tweed"]');
+      const spy = sandbox.spy(console, 'error');
 
       const Component = bsStyles(['minimal', 'boss', 'plaid', 'tweed'], 'plaid')(
         class extends React.Component {
@@ -79,15 +77,19 @@ describe('bsStyles', () => {
       expect(instance.props.bsStyle).to.equal('plaid');
 
       render(<Component bsStyle="not-plaid" />);
+
+      expect(spy.calledWithMatch('expected one of ["minimal","boss","plaid","tweed"]')).to.be.ok;
     });
 
     it('should work with functional components', () => {
-      shouldWarn('expected one of ["minimal","boss","tartan"]');
+      const spy = sandbox.spy(console, 'error');
 
       const Component = bsStyles(['minimal', 'boss', 'tartan'], 'tartan')(
         () => <span />
       );
 
       render(<Component bsStyle="not-plaid" />);
+
+      expect(spy.calledWithMatch('expected one of ["minimal","boss","tartan"]')).to.be.ok;
     });
   });
